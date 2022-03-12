@@ -1,5 +1,7 @@
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.Arrays;
+
 public class ComposingMethods {
 
     // 1. Extract Method
@@ -37,7 +39,7 @@ public class ComposingMethods {
         return order.basePrice() > 1000;
     }
 
-    // 5. Replace Temp with Query
+    // 5. Replace Temp with Query (ndion: Replace Temp with Method)
     double calculateTotal() {
         if (basePrice() > 1000) {
             return basePrice() * 0.95;
@@ -65,10 +67,35 @@ public class ComposingMethods {
         //...
     }
 
+    // 8. Replace Method with Method Object (ndion: Replace large Method with Class of smaller methods)
+    class Order {
+        public double price() {
+            return new PriceCalculator(this).compute();
+        }
+    }
 
-    // 8. Replace Method with Method Object
+    class PriceCalculator {
+        private double primaryBasePrice;
+        private double secondaryBasePrice;
+        private double tertiaryBasePrice;
 
+        public PriceCalculator(Order order) {
+            //...
+        }
+
+        public double compute() {
+            //...
+        }
+    }
 
     // 9. Substitute Algorithm
+    String foundPerson(String[] people) {
+        List candidates = Arrays.asList(new String[] {"Ndion", "John", "Doe"});
+        for (int i = 0; i < people.length; i++) {
+            if (candidates.contains(people[i]))
+                return people[i];
+        }
+        return "";
+    }
 
 }
