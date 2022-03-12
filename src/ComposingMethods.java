@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 public class ComposingMethods {
 
     // 1. Extract Method
@@ -49,9 +51,19 @@ public class ComposingMethods {
     }
 
     // 6. Split Temp Variable
-
+    final double perimeter = 2 * (height + width);
+    System.out.println(perimeter);
+    final double area = height * width;
+    System.out.println(area);
 
     // 7. Remove Assignments to Parameters
+    int discount(int inputVal, int quantity) {
+        int result = inputVal;
+        if (quantity > 50) {
+            result -= 2;
+        }
+        //...
+    }
 
 
     // 8. Replace Method with Method Object
