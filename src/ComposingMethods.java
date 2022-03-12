@@ -5,6 +5,7 @@ public class ComposingMethods {
         printBanner();
         printDetails(getOutstanding());
     }
+
     void printDetails(double outstanding) {
         System.out.println("name: " + name);
         System.out.println("amount: " + outstanding);
@@ -33,4 +34,29 @@ public class ComposingMethods {
     boolean hasDiscount(Order order) {
         return order.basePrice() > 1000;
     }
+
+    // 5. Replace Temp with Query
+    double calculateTotal() {
+        if (basePrice() > 1000) {
+            return basePrice() * 0.95;
+        }
+        else {
+            return basePrice() * 0.98;
+        }
+    }
+    double basePrice() {
+        return quantity * itemPrice;
+    }
+
+    // 6. Split Temp Variable
+
+
+    // 7. Remove Assignments to Parameters
+
+
+    // 8. Replace Method with Method Object
+
+
+    // 9. Substitute Algorithm
+
 }
