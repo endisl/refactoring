@@ -68,9 +68,23 @@ public class SimplifyingConditionals {
     speed = bird.getSpeed();
 
     // 7. Introduce Null Object
-
+    class NullCustomer extends Customer {
+        boolean isNull() {
+            return true;
+        }
+        Plan getPlan() {
+            return new NullPlan();
+        }
+        //...
+    }
+    customer = (order.customer != null) ? order.customer : new NullCustomer();
+    plan = customer.getPlan();
 
     // 8. Introduce Assertion
+    double getExpenseLimit() {
+        Assert.isTrue(expenseLimit != NULL_EXPENSE || primaryProject != null);
 
+        return (expenseLimit != NULL_EXPENSE) ? expenseLimit : primaryProject.getMemberExpenseLimit();
+    }
 
 }
